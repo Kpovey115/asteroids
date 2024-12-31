@@ -60,7 +60,7 @@ def main():
             for shot in shotGroup:
                 if asteroidItem.collision(shot):
                     shot.kill()
-                    asteroidItem.kill()
+                    asteroidItem.split()
 
 
         screen.fill("black")

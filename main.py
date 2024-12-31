@@ -47,7 +47,6 @@ def main():
                 return
 
 
-
         for updatableItem in updatableGroup:
             updatableItem.update(dt)
             
@@ -57,6 +56,12 @@ def main():
             if asteroidItem.collision(player):
                 print("Game Over!")
                 sys.exit()
+
+            for shot in shotGroup:
+                if asteroidItem.collision(shot):
+                    shot.kill()
+                    asteroidItem.kill()
+
 
         screen.fill("black")
 

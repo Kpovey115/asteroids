@@ -3,6 +3,7 @@ import sys
 from player import Player
 from asteroid import Asteroid
 from asteroidfield import AsteroidField
+from shot import Shot
 
 from constants import *
 
@@ -24,6 +25,7 @@ def main():
     updatableGroup = pygame.sprite.Group()
     drawableGroup = pygame.sprite.Group()
     asteroidGroup = pygame.sprite.Group()
+    shotGroup = pygame.sprite.Group()
 
    # asteroid / asteroid field logic
     Asteroid.containers = (asteroidGroup, updatableGroup, drawableGroup)
@@ -33,6 +35,9 @@ def main():
     # player logic
     Player.containers = (updatableGroup, drawableGroup)
     player = Player(SCREEN_WIDTH /2, SCREEN_HEIGHT /2)
+
+    #shot/bullet logic
+    Shot.containers = (shotGroup, updatableGroup,drawableGroup)
     
 
     while True:
@@ -60,6 +65,7 @@ def main():
     
         pygame.display.flip()
         dt = clock.tick(60) / 1000
+        player.shotTimer -= dt
 
 if __name__ == "__main__":
     main()
